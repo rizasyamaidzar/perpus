@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RakController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\GuruController;
@@ -31,7 +32,7 @@ use App\Http\Controllers\DashboardSiswaController;
 */
 
 
-Route::get('/', [SimpanController::class,'index'])->name('index')->middleware('guest');
+Route::resource('/',HomeController::class);
 // Route Login
 Route::get('/login', [LoginController::class,'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class,'authenticate']);

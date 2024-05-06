@@ -21,6 +21,7 @@ return new class extends Migration
             $table->integer('tahun');
             $table->integer('jumlah');
             $table->integer('tebal');
+            $table->integer('level');
             $table->foreignId('category_id');
             $table->foreignId('rak_id');
             $table->timestamps();

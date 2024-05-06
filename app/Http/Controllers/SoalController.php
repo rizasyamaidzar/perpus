@@ -63,6 +63,15 @@ class SoalController extends Controller
     public function show(Soal $soal)
     {
         //
+        $option = Options::where("soal_id",$soal->id)->get();
+        $bukusoal = Buku::where('id',$soal->buku_id)->first();
+        return view('option.index',[
+            'option' => $option,
+            'soal' => $soal,
+            'buku' => $bukusoal,
+            'title' => 'Option'
+            
+        ]);
     }
 
     /**

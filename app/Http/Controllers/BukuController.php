@@ -17,7 +17,7 @@ class BukuController extends Controller
      */
     public function index()
     {
-        $buku = Buku::all();
+        $buku = Buku::with(['category','rak'])->get();
 
         return view('buku.index',[
             'buku' => $buku,
@@ -55,6 +55,7 @@ class BukuController extends Controller
             "tahun" =>"required",
             "jumlah" =>"required",
             "tebal" =>"required",
+            "level" =>"required",
             "category_id" =>"required",
             "rak_id" =>"required",
             
@@ -111,6 +112,7 @@ class BukuController extends Controller
             "tahun" =>"required",
             "jumlah" =>"required",
             "tebal" =>"required",
+            "level" =>"required",
             "category_id" =>"required",
             "rak_id" =>"required",
         ]);

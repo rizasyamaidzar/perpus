@@ -83,20 +83,90 @@ class PengembalianController extends Controller
             $point -=20;    
             Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
         }else{
-            if($pinjam->buku->tebal > 100){
-                $point = $pinjam->siswa->point;
-                $point +=200;
-                Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+            if($pinjam->buku->level == 5){
+                if($pinjam->buku->tebal > 100){
+                    $point = $pinjam->siswa->point;
+                    $point +=250;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
+                    $point = $pinjam->siswa->point;
+                    $point +=150;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else{
+                    $point = $pinjam->siswa->point;
+                    $point +=100;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
             }
-            else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
-                $point = $pinjam->siswa->point;
-                $point +=100;
-                Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+            else if($pinjam->buku->level == 4){
+                if($pinjam->buku->tebal > 100){
+                    $point = $pinjam->siswa->point;
+                    $point +=240;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
+                    $point = $pinjam->siswa->point;
+                    $point +=140;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else{
+                    $point = $pinjam->siswa->point;
+                    $point +=90;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+            }
+            else if($pinjam->buku->level == 3){
+                if($pinjam->buku->tebal > 100){
+                    $point = $pinjam->siswa->point;
+                    $point +=230;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
+                    $point = $pinjam->siswa->point;
+                    $point +=130;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else{
+                    $point = $pinjam->siswa->point;
+                    $point +=80;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+            }
+            else if($pinjam->buku->level == 2){
+                if($pinjam->buku->tebal > 100){
+                    $point = $pinjam->siswa->point;
+                    $point +=220;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
+                    $point = $pinjam->siswa->point;
+                    $point +=120;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else{
+                    $point = $pinjam->siswa->point;
+                    $point +=70;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
             }
             else{
-                $point = $pinjam->siswa->point;
-                $point +=50;
-                Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                if($pinjam->buku->tebal > 100){
+                    $point = $pinjam->siswa->point;
+                    $point +=210;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else if($pinjam->buku->tebal < 100 && $pinjam->buku->tebal > 50  ){
+                    $point = $pinjam->siswa->point;
+                    $point +=110;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
+                else{
+                    $point = $pinjam->siswa->point;
+                    $point +=60;
+                    Siswa::where("id",$pinjam->siswa_id)->update(['point' => $point]);
+                }
             }
         }        
         $validateDate['tgl_kembali'] = date('Y-m-d');

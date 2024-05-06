@@ -18,6 +18,9 @@
                     Keterangan
                 </th>
                 <th scope="col" class="px-6 py-3">
+                    Foto
+                </th>
+                <th scope="col" class="px-6 py-3">
                     Action
                 </th>
             </tr>
@@ -33,6 +36,9 @@
                 </td>
                 <td class="px-6 py-4">
                     {{$ct->keterangan}}
+                </td>
+                <td class="px-6 py-4">
+                    <img src="{{ asset('storage/' . $ct->foto) }}" width="50px" height="50px">
                 </td>
                 <td class="px-6 py-4 flex items-center">
                 @can('admin')

@@ -47,10 +47,10 @@
                 {{ $b->judul }}
                 </td>
                 <td class="px-6 py-4">
-                {{ $b->rak_id }}
+                {{ $b->rak->nama}}
                 </td>
                 <td class="px-6 py-4">
-                {{ $b->category_id }}
+                {{ $b->category->nama }}
                 </td>
                 <td class="px-6 py-4">
                 {{ $b->jumlah }}

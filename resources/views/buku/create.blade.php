@@ -61,7 +61,7 @@
             </div>
             @enderror
              <div class="mb-5">
-                <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah</label>
+                <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Jumlah Buku</label>
                 <input type="number" id="jumlah" name="jumlah" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 " required />
             </div>
             @error('jumlah')
@@ -79,6 +79,21 @@
             </div>
             @enderror
             <div class="col-span-2">
+                <label for="level" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Level</label>
+                <select id="level" name="level" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                </select>
+            </div>
+            @error('level')
+            <div class="text-red-400">
+                {{ $message }}
+            </div>
+            @enderror
+            <div class="col-span-2">
                 <label for="category" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Category</label>
                 <select id="category" name="category_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         @foreach($category as $ct)
@@ -86,7 +101,6 @@
                         @endforeach
                 </select>
             </div>
-            
             @error('categoty_id')
             <div class="text-red-400">
                 {{ $message }}

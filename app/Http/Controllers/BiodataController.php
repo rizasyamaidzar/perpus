@@ -21,7 +21,7 @@ class BiodataController extends Controller
         if($user->role == 1){
             $profil = Guru::where("user_id", $user->id)->first();
         }
-        else{
+        else {
             $profil = Siswa::where("user_id", $user->id)->first();
         }
         return view('biodatasiswa',[

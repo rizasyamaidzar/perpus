@@ -46,7 +46,7 @@ class OptionsController extends Controller
 
         Options::create($validatedData);
         
-        return redirect()->route('soal.index')->with('success', 'Category created successfully.');
+        return redirect()->back()->with('success', 'Category created successfully.');
     }
 
     /**
@@ -94,6 +94,6 @@ class OptionsController extends Controller
     public function destroy(Options $option)
     {
         Options::destroy($option->id);
-        return redirect('/soal')->with("success","Jadwal has been Deleted!");
+        return redirect()->back()->with("success","Jadwal has been Deleted!");
     }
 }

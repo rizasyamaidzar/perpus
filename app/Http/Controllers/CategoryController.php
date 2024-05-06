@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Rak;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\UpdateCategoryRequest;
 use Illuminate\Support\Facades\Gate;
 class CategoryController extends Controller
@@ -44,9 +45,14 @@ class CategoryController extends Controller
         if (Gate::allows('admin')) {
             // Jika pengguna memiliki izin 'admin', lanjutkan dengan menyimpan kategori
             $validatedData = $request->validate([
+                "foto" => "image|file|max:2048",
                 'nama' => 'required|string',
                 'keterangan' => 'required|string',
             ]);
+            if($request->file('foto')){
+                $namacover = "$request->nama".".".$validatedData['foto']->getClientOriginalExtension();
+                $validatedData['foto']  = $validatedData['foto']->storeAs("category-cover",$namacover);
+            } 
 
             Category::create($validatedData);
 
@@ -85,7 +91,16 @@ class CategoryController extends Controller
         $validateDate = $request->validate([
             'nama' => 'required|string',
             'keterangan' => 'required|string',
+            "foto" => "image|file|max:2048",
         ]);
+        if($request->file('foto')){
+            // menghapus data sebelumnya
+            if ($request->oldfoto){
+                Storage::delete($request->oldfoto);
+            }
+            $namacover = "$request->nama".".".$validateDate['foto']->getClientOriginalExtension();
+            $validateDate['foto']  = $validateDate['foto']->storeAs("category-cover",$namacover);
+        }
         Category::where("id",$category->id)->update($validateDate);
 
         return redirect('/category')->with("success","New Category has been Updated!");
@@ -96,6 +111,9 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        if ($category->foto){
+            Storage::delete($category->foto);
+        }
         Category::destroy($category->id);
         return redirect('/category')->with("success","Jadwal has been Deleted!");
     }
